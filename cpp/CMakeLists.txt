@@ -13,14 +13,16 @@ set(SRC "${HOME}/src")
 set(INCLUDE "${HOME}/include")
 set(DEPENDENCIES "${HOME}/dependencies")
 
+# 显示编译命令
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
 # 设置链接选项
 # PROJECT_NAME是项目名称
 # libname是需要链接的库文件名称
 target_link_libraries(${PROJECT_NAME} "${DEPENDENCIES}/libname")
 
 # 设置编译器参数 (例如: 增加-g -pthread参数)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} lpthread")
+add_compile_options(-g -pthread)
 
 # 递归检索目录下所有源文件
 aux_source_directory(src SRCS)
